@@ -1,5 +1,5 @@
 # Ex03 To-Do List using JavaScript
-## Date:
+## Date: 28.03.25
 
 ## AIM
 To create a To-do Application with all features using JavaScript.
@@ -36,10 +36,137 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5a8f6; 
+            text-align: center;
+        }
+        header, footer {
+            background-color: #6299f9; 
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .todo-container {
+            max-width: 400px;
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #6da6df;
+        }
+        .todo-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #6da6df;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #6da6df;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .todo-item.completed span {
+            text-decoration: line-through;
+            color: rgb(164, 106, 140);
+        }
+        .todo-buttons button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .complete-btn {
+            background-color: #6da6df; 
+            color: white;
+        }
+        .delete-btn {
+            background-color: #6da6df;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>Todo Application</header>
+    <div class="todo-container">
+        <h2>To-Do List ✅</h2>
+        <input type="text" id="todo-input" class="todo-input" placeholder="Add a new task">
+        <ul id="todo-list" class="todo-list"></ul>
+    </div>
+    <script>
+        const todoInput = document.getElementById('todo-input');
+        const todoList = document.getElementById('todo-list');
 
+        function addTodo() {
+            const task = todoInput.value.trim();
+            if (task === '') return;
 
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+
+            const span = document.createElement('span');
+            span.textContent = task;
+
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'todo-buttons';
+
+            const completeBtn = document.createElement('button');
+            completeBtn.textContent = 'Complete';
+            completeBtn.className = 'complete-btn';
+            completeBtn.onclick = () => {
+                li.classList.toggle('completed');
+            };
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.onclick = () => {
+                todoList.removeChild(li);
+            };
+
+            buttonsDiv.appendChild(completeBtn);
+            buttonsDiv.appendChild(deleteBtn);
+
+            li.appendChild(span);
+            li.appendChild(buttonsDiv);
+
+            todoList.appendChild(li);
+            todoInput.value = '';
+        }
+
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+    </script>
+</body>
+</html>
 ## OUTPUT
-
+![image](https://github.com/user-attachments/assets/dc8d97bd-82ef-466f-b440-30e9c8de98cb)
+```
 
 ## RESULT
 The program for creating To-do list using JavaScript is executed successfully.
